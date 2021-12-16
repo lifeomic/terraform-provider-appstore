@@ -1,0 +1,15 @@
+{
+  "short_name": "Anxiety Severity Assessment",
+  "name": "Anxiety Severity Assessment Terraform",
+  "icons": [
+    {
+      "src": "icon-240.png",
+      "sizes": "240x240"
+    }
+  ],
+  "start_url": "#/",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "description": "***What is this?***\n\nAn anxiety severity assessment based on the 7-item variant of the Generalized Anxiety Disorder (GAD-7) survey.\n\nGAD-7 is one of the most [frequently used](https://www.ncbi.nlm.nih.gov/pubmed/18388841) self-report based assessments for screening and preliminary diagnosis of anxiety disorders.\n\n***Who should use this?***\n\nAnyone seeking to better understand their relative anxiety severity.\n"
+}

@@ -7,17 +7,42 @@ terraform {
   }
 }
 
+variable "name" {
+  type = string
+}
+
+variable "icons" {
+  type = list(object({
+    src = string
+    sizes = string
+  }))
+}
+
+variable "start_url" {
+  type = string
+}
+
+variable "description" { 
+  type = string
+}
+
+# Not the right name, just for testing
+variable "url_base" {
+  type = string
+  default = "https://lifeapplets.dev.lifeomic.com" # The anxiety part should probably be separate
+}
+
+locals {
+    app_url = "${var.url_base}/anxiety"
+  }
+
 provider "appstore" {}
 
 resource "applet" "anxiety" {
   provider = appstore
-  name = "Anxiety Applet"
-  description = "Some fancy description, with edits"
+  name = var.name
+  description = var.description
   author_display = "LifeOmic"
-  url = "https://lifeapplets.dev.lifeomic.com/anxiety/"
-  image = "https://lifeapplets.dev.lifeomic.com/anxiety/icon-240.png"
+  url = "${local.app_url}/${var.start_url}"
+  image = "${local.app_url}/${var.icons[0].src}"
 }
-
-# output "app_name" {
-#   value = data.application.anxiety.name
-# }

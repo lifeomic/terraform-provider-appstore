@@ -1,4 +1,4 @@
-module github.com/lifeomic/app-store-tf-provider
+module github.com/lifeomic/terraform-provider-appstore
 
 go 1.17
 
@@ -26,9 +26,6 @@ require (
 	github.com/aws/aws-sdk-go-v2/internal/configsources v1.1.2 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.0.2 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/ini v1.3.2 // indirect
-	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.10.0 // indirect
-	github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v1.5.0 // indirect
-	github.com/aws/aws-sdk-go-v2/service/internal/endpoint-discovery v1.3.3 // indirect
 	github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.5.2 // indirect
 	github.com/aws/aws-sdk-go-v2/service/sso v1.6.2 // indirect
 	github.com/aws/aws-sdk-go-v2/service/sts v1.11.1 // indirect
