@@ -81,5 +81,8 @@ func appletResource() *schema.Resource {
 		Read:   readApplet,
 		Update: updateApplet,
 		Delete: deleteApplet,
+		Importer: &schema.ResourceImporter{
+			State: schema.ImportStatePassthrough,
+		},
 	}
 }

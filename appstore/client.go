@@ -207,7 +207,7 @@ func (client *AppStoreClient) editAppStoreListing(id string, params appStoreCrea
 }
 
 func BuildAppStoreClient() (*AppStoreClient, error) {
-	cfg, err := config.LoadDefaultConfig(context.TODO())
+	cfg, err := config.LoadDefaultConfig(context.TODO(), config.WithSharedConfigProfile("lifeomic-dev"))
 	if err != nil {
 		return nil, err
 	}

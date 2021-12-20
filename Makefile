@@ -1,8 +1,10 @@
 TEST?=$$(go list ./... | grep -v 'vendor') 
 BINARY=terraform-provider-appstore
 VERSION=1.0.0
+ARCH?=darwin_arm64
 VAR_FILE=manifest.json
 TF_LOG=ERROR
+INSTALL_LOC=~/.terraform.d/plugins/lifeomic.com/tf/appstore/${VERSION}/${ARCH}
 
 default: install
 
@@ -11,9 +13,12 @@ build:
 
 clean:
 	rm -f .terraform.lock.hcl
+	rm -rf .terraform
+	rm -rf ${INSTALL_LOC}
 
 install: build clean
-	mv ${BINARY} ~/.terraform.d/plugins/lifeomic.com/tf/appstore/${VERSION}/darwin_arm64/terraform-provider-appstore_v${VERSION}
+	install -d ${INSTALL_LOC}
+	install ${BINARY} ${INSTALL_LOC}/${BINARY}_v${VERSION}
 
 init: install
 	terraform init
