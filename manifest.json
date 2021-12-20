@@ -1,6 +1,6 @@
 {
   "short_name": "Anxiety Severity Assessment",
-  "name": "Anxiety Severity Assessment Terraform",
+  "name": "Anxiety Severity Assessment",
   "icons": [
     {
       "src": "icon-240.png",
@@ -11,5 +11,5 @@
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff",
-  "description": "***What is this?***\n\nAn anxiety severity assessment based on the 7-item variant of the Generalized Anxiety Disorder (GAD-7) survey.\n\nGAD-7 is one of the most [frequently used](https://www.ncbi.nlm.nih.gov/pubmed/18388841) self-report based assessments for screening and preliminary diagnosis of anxiety disorders.\n\n***Who should use this?***\n\nAnyone seeking to better understand their relative anxiety severity.\n"
+  "description": "***What is this?***\n\nAn anxiety severity assessment based on the 7-item variant of the Generalized Anxiety Disorder (GAD-7) survey.\n\nGAD-7 is one of the most [frequently used](https://www.ncbi.nlm.nih.gov/pubmed/18388841) self-report based assessments for screening and preliminary diagnosis of anxiety disorders.\n\n***Who should use this?***\n\nAnyone seeking to better understand their relative anxiety severity.\n\nThis assessment does not provide medical advice. It is not intended for the purpose of any medical diagnosis or treatment. The informational content is intended for awareness and wellness education. Always seek the advice of your health care provider regarding questions about a medical condition."
 }
