@@ -82,7 +82,7 @@ type AppStoreClient struct {
 
 func (client *AppStoreClient) gql(query string, variables map[string]interface{}) (*lambda.InvokeOutput, error) {
 	APP_STORE_ARN := "app-store-service:deployed"
-	return client.c.Invoke(context.TODO(), &lambda.InvokeInput{
+	return client.c.Invoke(context.Background(), &lambda.InvokeInput{
 		FunctionName: &APP_STORE_ARN,
 		Payload:      gqlQuery(query, variables),
 	})
@@ -207,7 +207,7 @@ func (client *AppStoreClient) editAppStoreListing(id string, params appStoreCrea
 }
 
 func BuildAppStoreClient() (*AppStoreClient, error) {
-	cfg, err := config.LoadDefaultConfig(context.TODO(), config.WithSharedConfigProfile("lifeomic-dev"))
+	cfg, err := config.LoadDefaultConfig(context.Background(), config.WithSharedConfigProfile("lifeomic-dev"))
 	if err != nil {
 		return nil, err
 	}
