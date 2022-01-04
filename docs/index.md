@@ -1,6 +1,6 @@
 # <provider> Provider
 
-This provider is for managing LifeOmic app store resources. Typically these applets are then published on the marketplace (marketplace provider is still under development). If you're working to use this provider for external applets, contact LifeOmic for assistance. A self-serve experience in under development.
+This provider is for managing LifeOmic app store resources. Typically these applets are then published on the marketplace (marketplace provider is still under development). If you're working to use this provider for external applets, contact LifeOmic for assistance. A self-serve experience is under development.
 
 The provider uses your local AWS config in order to authenticate. Support for token-based authentication with the public graphql-proxy will probably come in the future.
 
