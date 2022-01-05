@@ -26,10 +26,10 @@ jobs:
         name: Unshallow
         run: git fetch --prune --unshallow
       - name: Install semantic-release Dependency
-        run: npm install -g conventional-changelog-conventionalcommits
+        run: npm install -g semantic-release conventional-changelog-conventionalcommits
       -
         name: Tag Release
-        run: npx semantic-release
+        run: semantic-release
       -
         name: Set up Go
         uses: actions/setup-go@v2
