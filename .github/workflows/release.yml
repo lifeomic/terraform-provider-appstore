@@ -17,6 +17,7 @@ on:
 jobs:
   goreleaser:
     runs-on: ubuntu-latest
+    environment: terraform-registry
     steps:
       -
         name: Checkout
