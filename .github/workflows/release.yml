@@ -26,6 +26,9 @@ jobs:
         name: Unshallow
         run: git fetch --prune --unshallow
       -
+        name: Tag Release
+        run: npx semantic-release
+      -
         name: Set up Go
         uses: actions/setup-go@v2
         with:
