@@ -1,8 +1,6 @@
 package appstore
 
 import (
-	"errors"
-
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
@@ -50,7 +48,8 @@ func updateApplet(d *schema.ResourceData, meta interface{}) error {
 }
 
 func deleteApplet(d *schema.ResourceData, meta interface{}) error {
-	return errors.New("Unimplemented")
+	client := meta.(*AppStoreClient)
+	return client.deleteAppStoreListing(d.Id())
 }
 
 func appletResource() *schema.Resource {

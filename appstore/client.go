@@ -24,6 +24,12 @@ const GET_APP_STORE_LISTING = `
   }
 `
 
+const DELETE_APP_STORE_LISTING = `
+  mutation DeleteAppStoreListing($id: ID!) {
+	deleteApp(id: $id)
+  }
+`
+
 const CREATE_APP_STORE_LISTING = `
   mutation CreateAppStoreListing($input: CreateWebAppInput!) {
     createWebApp(input: $input) {
@@ -59,6 +65,7 @@ func gqlQuery(query string, variables map[string]interface{}) []byte {
 		Rules: map[string]bool{
 			"createData": true,
 			"updateData": true,
+			"deleteData": true,
 		},
 	})
 	body, _ := json.Marshal(&Body{Query: query, Variables: variables})
@@ -96,10 +103,11 @@ type app struct {
 	Url           string `json:"url"`
 }
 
+type Payload struct {
+	Body string `json:"body"`
+}
+
 func (client *AppStoreClient) getAppStoreListing(id string) (*app, error) {
-	type Payload struct {
-		Body string `json:"body"`
-	}
 	type Body struct {
 		Data struct {
 			App app `json:"app"`
@@ -132,9 +140,6 @@ type appStoreCreate struct {
 }
 
 func (client *AppStoreClient) createAppStoreListing(params appStoreCreate) (*string, error) {
-	type Payload struct {
-		Body string `json:"body"`
-	}
 	type Body struct {
 		Data struct {
 			CreateWebApp struct {
@@ -169,12 +174,9 @@ func (client *AppStoreClient) createAppStoreListing(params appStoreCreate) (*str
 }
 
 func (client *AppStoreClient) editAppStoreListing(id string, params appStoreCreate) error {
-	type Payload struct {
-		Body string `json:"body"`
-	}
 	type Body struct {
 		Data struct {
-			EdtiWebApp bool `json:"editWebApp"`
+			EditWebApp bool `json:"editWebApp"`
 		} `json:"data"`
 	}
 
@@ -200,8 +202,40 @@ func (client *AppStoreClient) editAppStoreListing(id string, params appStoreCrea
 	if err != nil {
 		return err
 	}
-	if !body.Data.EdtiWebApp {
+	if !body.Data.EditWebApp {
 		return errors.New("Failed to edit web app")
+	}
+	return nil
+}
+
+func (client *AppStoreClient) deleteAppStoreListing(id string) error {
+	res, err := client.gql(DELETE_APP_STORE_LISTING, map[string]interface{}{
+		"id": id,
+	})
+	if err != nil {
+		return err
+	}
+
+	var payload Payload
+	err = json.Unmarshal(res.Payload, &payload)
+	if err != nil {
+		return err
+	}
+	var body struct {
+		Data struct {
+			DeleteApp bool `json:"deleteApp"`
+		} `json:"data"`
+	}
+	err = json.Unmarshal([]byte(payload.Body), &body)
+	if err != nil {
+		return err
+	}
+	err = json.Unmarshal([]byte(payload.Body), &body)
+	if err != nil {
+		return err
+	}
+	if !body.Data.DeleteApp {
+		return errors.New("Failed to delete web app")
 	}
 	return nil
 }
