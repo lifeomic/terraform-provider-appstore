@@ -40,7 +40,7 @@ locals {
 
 provider "appstore" {}
 
-resource "applet" "anxiety" {
+resource "applet" "terraform_test_applet" {
   provider       = appstore
   name           = var.name
   description    = var.description
