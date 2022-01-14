@@ -241,7 +241,7 @@ func (client *AppStoreClient) deleteAppStoreListing(id string) error {
 }
 
 func BuildAppStoreClient() (*AppStoreClient, error) {
-	cfg, err := config.LoadDefaultConfig(context.Background(), config.WithSharedConfigProfile("lifeomic-dev"))
+	cfg, err := config.LoadDefaultConfig(context.Background())
 	if err != nil {
 		return nil, err
 	}
